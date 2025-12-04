@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner toetsenbord = new Scanner(System.in);
+        String infinitief = "";
+        String voornaamwoord = "";
+
+        // Blijven vragen tot een correct werkwoord eindigend op "er"
+        while (true) {
+            System.out.print("Geef een werkwoord in infinitief dat eindigt op 'er': ");
+            infinitief = toetsenbord.nextLine();
+
+            if (infinitief.endsWith("er")) {
+                break; // correct, uit de lus
+            } else {
+                System.out.println("Fout: het werkwoord moet eindigen op 'er'. Probeer opnieuw.");
+            }
+        }
+
+        // Persoonlijk voornaamwoord vragen
+        System.out.print("Geef een persoonlijk voornaamwoord: ");
+        voornaamwoord = toetsenbord.nextLine();
+
+        // Stam van het werkwoord berekenen
+        String stam = infinitief.substring(0, infinitief.length() - 2);
+
+        // Vervoegen in indicatif présent
+        String vervoegd = "";
+
+        if (voornaamwoord.equals("je") || voornaamwoord.equals("j'")) {
+            vervoegd = stam + "e";
+        } else if (voornaamwoord.equals("tu")) {
+            vervoegd = stam + "es";
+        } else if (voornaamwoord.equals("il") || voornaamwoord.equals("elle") || voornaamwoord.equals("on")) {
+            vervoegd = stam + "e";
+        } else if (voornaamwoord.equals("nous")) {
+            vervoegd = stam + "ons";
+        } else if (voornaamwoord.equals("vous")) {
+            vervoegd = stam + "ez";
+        } else if (voornaamwoord.equals("ils") || voornaamwoord.equals("elles")) {
+            vervoegd = stam + "ent";
+        } else {
+            vervoegd = stam; // fallback
+        }
+
+        System.out.println("Persoonlijk voornaamwoord: " + voornaamwoord);
+        System.out.println("Stam van het werkwoord: " + stam);
+        System.out.println("Vervoegd werkwoord: " + voornaamwoord + " " + vervoegd);
+    }
+}
