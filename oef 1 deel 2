@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner toetsenbord = new Scanner(System.in);
+        System.out.print("Geef een getal: ");
+        double getal = toetsenbord.nextDouble();
+
+        System.out.println(getal);
+
+        while (getal > 1.0) {
+            getal = getal / 2;
+            if (getal < 1.0) {
+                break;
+            }
+            System.out.println(getal);
+        }
+    }
+}
